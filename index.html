@@ -1,84 +1,422 @@
-<!DOCTYPE html>
+<!--<!doctype html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../css/aui.css" />
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="copyright" content="www.apicloud.com" />
-<style>
-    html,body,header,section,footer,nav,div,ul,ol,li,img,a,span,em,del,center,strong,var,fieldset,form,label,dt,dd,cite,input,hr,time,mark,code,figcaption,figure,textarea{
-        margin:0;
-        border:0;
-        padding:0;
-        font-family: Tahoma, Geneva, sans-serif;
-        font-style:normal;
-    }
-html,body {
-    -webkit-touch-callout:none;
-    -webkit-text-size-adjust:none;
-    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
-    -webkit-user-select:none;
-}
-header,footer,section,nav,img,a,button,em,del,strong,var,fieldset,label,cite,small,time,mark,code,figcaption,figure,textarea{
-    display:block;
-}
-header,section,footer,nav {
-    position:relative;
-    overflow:hidden;
-}
-ol,ul{
-    list-style:none;
-}
-input,button,textarea {
-    border:0;
-    margin:0;
-    padding:0;
-    font-size:1em;
-    line-height:1em;
-    -webkit-appearance:none;
-    background-color:rgba(0, 0, 0, 0);
-}
-span{
-    display:inline-block;
-}
-a,a:visited{
-    text-decoration:none;
-}
-    body {
-        background-image: url(./image/common/bg.png);
-    }
-</style>
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>Hello APP</title>
+<link rel="stylesheet" type="text/css" href="./css/api.css" />
+<link rel="stylesheet" type="text/css" href="css/aui.css" />
+<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<button tapmode="ui-hov" onclick="opensl()">
-		<span>我阿里点击伺服电机司法局</span>
-	</button>
-	<p>这厮什么玩意</p>
-	<br>
-	<br>
-	<br>
+<header class="aui-bar aui-bar-nav aui-bar-info" style="margin-bottom:5px;position: fixed">
+<a class="aui-btn aui-btn-info aui-pull-left"> <span class="aui-iconfont aui-icon-left"></span> </a>
+<a class="aui-btn aui-btn-primary aui-pull-left active"> <span class="aui-iconfont aui-icon-location"></span> </a>
+<div class="aui-title">
+顶部导航栏
+</div>
+<a class="aui-pull-right"> <span class="aui-iconfont aui-icon-my"></span> </a>
+</header>
+<div class="aui-card aui-noborder" style="margin-top:20px;padding:20px 10px 20px 10px">
+<ul class="aui-list-view" id="lists"></ul>
+<div class="aui-progress">
+<div class="aui-progress-bar aui-progress-warning jindu" style="width: 60%;"></div>
+</div>
+</div>
 </body>
-<script>
-    window.apiready = function(){
-        api.openSlidLayout({
-                    leftEdge:api.winWidth / 6.67,
-                    type:'left',
-                    fixedPane:{
-                        name: 'homeFixed',
-                        url: './html/homeFixed.html'
-                    },
-                    slidPane:{
-                        name: 'homeSlid',
-                        url: './html/homeSlid.html'
-                    }
-                }, function(ret) {
-                    /* 暂时不需要做任何事. */
-
-                }
-        );
-    };
+<script type="text/javascript" src="./script/aui-alert.js"></script>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript">
+apiready = function() {
+var conf = {};
+conf.appId = api.appId
+conf.name = api.appName
+conf.version = api.appVersion
+conf.systemType = api.systemType
+conf.deviceModel = api.deviceModel
+conf.deviceName = api.deviceName
+conf.uiMode = api.uiMode
+conf.systemVersion = api.systemVersion
+conf.deviceId = api.deviceId
+conf.operator = api.operator
+conf.connectionType = api.connectionType
+conf.fullScreen = api.fullScreen
+conf.screenWidth = api.screenWidth
+conf.screenheight = api.screenHeight
+conf.winWidth = api.winWidth
+conf.winHeight = api.winHeight
+conf.appParam = api.appParam
+conf.debug = api.debug
+conf.channel = api.channel
+conf.jailbreak = api.jailbreak
+for (i in conf) {
+$('#lists').append("<li  class='aui-list-view-cell'>" + i + ": <em style='float:right'>" + conf[i] + "</em></li>");
+$('.' + i).html(conf[i]);
+}
+var audio = api.require('audio');
+audio.play({
+path : 'http://7xisq1.com1.z0.glb.clouddn.com/apicloud/0d0b81b8bd5ab81bda9ca54267eb9b98.mp3'
+}, function(ret, err) {
+if (ret) {
+//duration：                //数字类型；音频总时长，单位为秒（s）
+//current：                 //数字 类型；当前播放位置，单位为秒（s）
+//complete：
+var bai = parseInt((ret.current /  ret.duration) * 100);
+$('.jindu').css('width', bai + "%");
+} else {
+alert(JSON.stringify(err));
+}
+});
+};
 </script>
+</html>-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/tplayer.css" />
+	<link rel="stylesheet" type="text/css" href="script/Plugins/FontAwesome4.1/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="./css/api.css" />
+	<link rel="stylesheet" type="text/css" href="css/aui.css" />
+	<script src="script/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/audio.css">
+</head>
+
+<body style="max-width:100%;">
+	<div id="top-kong" style="height:5%;"></div>
+	<input type="hidden" value="0.2" class="audio-default-volume" disabled="disabled" />
+	<!--音乐播放开始-->
+	<div class="audio-box" id="audio-box">
+		<div class="audio-container">
+			<div class="audio-view">
+				<div class="audio-cover"></div>
+				<div class="audio-body">
+					<div class='audio-auto-title' data-duration='10000' data-gap='10' data-duplicated='true'></div>
+					<div class="audio-backs">
+						<div class="audio-this-time">
+							00:00
+						</div>
+						<div class="audio-count-time">
+							00:00
+						</div>
+						<div class="audio-setbacks">
+							<i class="audio-this-setbacks"> <span class="audio-backs-btn"></span> </i>
+							<span class="audio-cache-setbacks"> </span>
+						</div>
+					</div>
+				</div>
+				<div class="audio-btn">
+					<div class="audio-select">
+						<!--<div class="audio-prev"></div>-->
+						<div class="audio-play"></div>
+						<div class="audio-next"></div>
+						<!--<div class="audio-menu"></div>
+							<div class="audio-volume"></div>-->
+					</div>
+					<div class="audio-set-volume">
+						<div class="volume-box">
+							<i><span></span></i>
+						</div>
+					</div>
+					<div class="audio-list">
+						<div class="audio-list-head">
+							<p>
+								歌单
+							</p>
+							<span class="menu-close">关闭</span>
+						</div>
+						<ul class="audio-inline"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pop">
+		<div class="pop-content">
+			<div class="pop-content-box">
+				<div class="pop-content-title">
+					确认退出听视界吗?
+				</div>
+				<div class="left-btn cancel">
+					再看看
+				</div>
+				<div class="right-btn quit">
+					退出
+				</div>
+			</div>
+		</div>
+		<div class="volumeEdit pop-content2">
+			<div id="indicatorContainer"></div>
+			<i id="prgLogo" class="fa fa-volume-down fa-15" aria-hidden="true" style="font-size: 5em;color:#87CEEB"></i>
+		</div>
+	</div>
+	<!--top bar start-->
+	<div class="big-top-bar" id="main">
+		<div class="aui-tab aui-tab-info top-bar">
+			<ul class="aui-tab-nav" id="">
+				<li class="top-bar-ico content-openFram">
+					<i class="fa fa-music fa-15" aria-hidden="true" style="font-size: 2em;color:#E0E0E0;line-height:50px;" ;></i>
+				</li>
+				<li class="top-bar-ico content-openFram">
+					<i class="fa fa-cloud  fa-15" aria-hidden="true" style="font-size: 2em;color:#E0E0E0;line-height:50px;" ;></i>
+				</li>
+				<li class="top-bar-ico content-openFram">
+					<i class="fa fa-user fa-15" aria-hidden="true" style="font-size: 2em;color:#E0E0E0;line-height:50px;" ;></i>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--top bar end-->
+	<!--content start-->
+	<div class="contetn"></div>
+	<!--content end-->
+	<!--音乐播放结束-->
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript" src="script/audio.js"></script>
+	<script src="script/jquery.marquee.js"></script>
+	<script type="text/javascript" src="./script/api.js"></script>
+	<script src="script/radialIndicator.js"></script>
+	<script type="text/javascript"></script>
+	<script type="text/javascript">
+		var songEq = 0,
+			volumeSize = 0.02;
+		apiready = function() {
+			/**var sms = api.require('moduleSMS');
+			 var resultCallback = function(ret, err) {
+			 document.getElementById("tel").value = ret.number
+			 }
+			 sms.getSmsNumber(resultCallback);**/
+			api.addEventListener({
+				name: 'volumeup'
+			}, function(ret, err) {
+				$('.pop,.pop-content2').show();
+				var setTime = setInterval(function() {
+					$('.pop,.pop-content2').hide();
+					clearInterval(setTime);
+				}, 2000);
+				var thisVolume = $('.audio-default-volume').val() * 100;
+				if (thisVolume == 100) {
+					return false;
+				}
+				var newVolume = (thisVolume + 10) / 100;
+				editVolume(thisVolume + 10);
+				$('.audio-default-volume').val(newVolume)
+				_set(newVolume);
+				return false;
+			});
+			api.addEventListener({
+				name: 'volumedown'
+			}, function(ret, err) {
+				$('.pop,.pop-content2').show();
+				var thisVolume = $('.audio-default-volume').val() * 100;
+				var setTime = setInterval(function() {
+					$('.pop,.pop-content2').hide();
+					clearInterval(setTime);
+				}, 2000);
+				if (thisVolume == 0) {
+					return false;
+				}
+				var newVolume = (thisVolume - 10) / 100;
+				editVolume(thisVolume - 10);
+				$('.audio-default-volume').val(newVolume)
+				_set(newVolume);
+				return false;
+			});
+			//监听返回键
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				$('.pop, .pop-content').show();
+			});
+			api.setAppIconBadge({
+				badge: 1
+			});
+			$('.location').click(function() {
+				var url = $(this).attr('href');
+				api.toast({
+					msg: '浏览器1'
+				});
+				openBrowser(url);
+			})
+
+			function openBrowser(url) {
+				api.toast({
+					msg: url
+				});
+				var urlObj = new UrlSearch(url);
+				//不显示标题栏
+				if (urlObj.visible && urlObj.visible == "false") {
+					var visible = false;
+				} else {
+					var visible = true;
+				}
+				var browser = api.require('webBrowser');
+				browser.open({
+					url: url,
+					titleBar: {
+						visible: visible, //标题栏是否隐藏，只支持Android，布尔类型，默认值false
+						bg: "#666", //标题栏背景颜色，支持 rgb，rgba，#fff等，默认值#393A3F
+						textColor: "#fff" //标题栏文字颜色，支持 rgb，rgba，#fff等，默认值#FFF
+					},
+					progress: {
+						color: "#87CEEB"
+					}
+				});
+			}
+
+
+			$('.content-openFram').click(function() {
+				openFram();
+			})
+
+			function openFram() {
+
+				var header = $api.byId('top-kong');
+				var headerPos = $api.offset(header);
+
+				var main = $api.byId('main');
+				var mainPos = $api.offset(main);
+
+				var bottom = $api.byId('audio-box');
+				var bottPos = $api.offset(bottom);
+
+				api.toast({
+					msg: api.winHeight - (headerPos.h + mainPos.h + bottPos.h)
+				});
+
+				api.openFrame({
+					name: 'body',
+					url: 'html/main.html',
+					rect: {
+						x: 0,
+						y: headerPos.h + mainPos.h,
+						w: headerPos.w,
+						h: api.winHeight - (headerPos.h + mainPos.h + bottPos.h),
+
+					}
+				});
+			}
+
+			/**var obj = api.require('UIWebBrowser');
+			 obj.open({
+			 rect : {
+			 x : 0,
+			 y : 20,
+			 w : 320,
+			 h : 300
+			 },
+			 path : 'http://baidu.com',
+			 fixedOn : api.frameName,
+			 fixed : true,
+			 button : {
+			 normal : 'widget://res/UIWebBrowser/normal.png',
+			 highlight : 'widget://res/UIWebBrowser/highlight.png',
+			 selected : 'widget://res/UIWebBrowser/selected.png',
+			 title : 'test',
+			 width : 55,
+			 height : 30,
+			 position : 'bottom'
+			 }
+			 }, function(ret) {
+			 api.alert({
+			 msg : JSON.stringify(ret)
+			 });
+			 });**/
+			function UrlSearch(url) {
+				var name, value;
+				var str = url;
+				//取得整个地址栏
+				var num = str.indexOf("?")
+				str = str.substr(num + 1);
+				//取得所有参数   stringvar.substr(start [, length ]
+				var arr = str.split("&");
+				//各个参数放到数组里
+				for (var i = 0; i < arr.length; i++) {
+					num = arr[i].indexOf("=");
+					if (num > 0) {
+						name = arr[i].substring(0, num);
+						value = arr[i].substr(num + 1);
+						this[name] = value;
+					}
+				}
+			}
+
+		}
+		$(function() {
+			var song = [{
+				'cover': 'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1182423846,768442908&fm=58',
+				'src': 'http://antiserver.kuwo.cn/anti.s?format=aac|mp3&rid=MUSIC_7165984&type=convert_url&response=res',
+				'title': 'faded',
+				'antor': 'Alan Walker',
+				'desc': '',
+				'album': '《kiss kesahitti》'
+			}, {
+				'cover': 'image/cover1.jpg',
+				'src': 'http://webmp3-1253691995.costj.myqcloud.com/audio/dqwm.mp3',
+				'title': '大橋のぞみ - 黒ネコのタンゴ234234234'
+			}, {
+				'cover': 'image/cover3.jpg',
+				'src': 'http://webmp3-1253691995.costj.myqcloud.com/audio/qby.mp3',
+				'title': '黒うさP,初音ミク - 千本桜'
+			}, {
+				'cover': 'image/cover4.jpg',
+				'src': 'http://webmp3-1253691995.costj.myqcloud.com/audio/jljt.mp3',
+				'title': '极乐净土'
+			}];
+			var audioFn = audioPlay({
+				song: song,
+				autoPlay: false //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
+			});
+			/* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
+			audioFn.newSong({
+				'cover': 'images/cover5.jpg',
+				'src': 'http://webmp3-1253691995.costj.myqcloud.com/audio/baab.mp3',
+				'title': 'B.A.A.B'
+			}, false);
+			/* 暂停播放 */
+			//audioFn.stopAudio();
+			/* 开启播放 */
+			//audioFn.playAudio();
+			/* 选择歌单中索引为3的曲目(索引是从0开始的)，第二个参数true立即播放该曲目，false则不播放 */
+			//audioFn.selectMenu(3,true);
+			/* 查看歌单中的曲目 */
+			//console.log(audioFn.song);
+			/* 当前播放曲目的对象 */
+			//console.log(audioFn.audio);
+		});
+	</script>
+	<script>
+		$(function() {
+			$('.pop .pop-content-box .cancel').click(function() {
+				$('.pop, .pop-content').hide();
+			})
+			$('.pop .pop-content-box .quit').click(function() {
+				exitApp();
+			});
+			$('.top-bar-ico').click(function() {
+				$('.top-bar-ico i').css("color", "#E0E0E0");
+				$(this).children('i').css("color", "blue");
+			})
+		})
+		var radialObj = radialIndicator('#indicatorContainer', {
+			barColor: '#87CEEB',
+			barWidth: 5,
+			displayNumber: false,
+			initValue: 20
+		});
+
+		function editVolume(num) {
+			radialObj.animate(num);
+		}
+
+		//var Request=new UrlSearch();
+		//Using Instance
+	</script>
+</body>
+
 </html>
