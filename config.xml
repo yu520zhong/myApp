@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<widget id="A6965066817858" version="0.0.11">
-  <name>API Demo</name>
+<widget id="A6052316391153" version="0.0.11">
+  <name>myApp</name>
   <description>api demo for api.</description>
   <author email="developer@apicloud.com" href="http://www.apicloud.com">APICloud</author>
   <content src="index.html"/>
